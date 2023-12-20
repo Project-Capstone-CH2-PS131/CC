@@ -1,0 +1,106 @@
+swagger: '2.0'
+info:
+  title: service
+  version: '1.0'
+host: host.dev
+basePath: /v1
+schemes:
+  - https
+produces:
+  - application/json
+
+paths:
+  /auth/register:
+    post:
+      operationId: register
+      x-google-backend:
+        address: https://host/v1/auth/register
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          schema:
+            properties: 
+              username:
+                type: string
+              email:
+                type: string
+              password:
+                type: string
+            required:
+              - username
+              - email
+              - password
+      
+      responses:
+        '201':
+          description: 'Register Success'
+        
+        '400':
+          description: 'Bad Request'
+
+  /auth/login:
+    post:
+      operationId: login
+      x-google-backend:
+        address: https://host/v1/auth/login
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          schema:
+            properties: 
+              email:
+                type: string
+              password:
+                type: string
+            required:
+              - email
+              - password
+      
+      responses:
+        '200':
+          description: 'Login Success'
+        
+        '400':
+          description: 'Bad Request'
+
+  /core/ingredient:
+    post:
+      operationId: ingredient
+      x-google-backend:
+        address: https:/host/v1/core/ingredient
+        deadline: 30.0
+      consumes:
+        - application/form-data
+      parameters:
+        - in: body
+          name: image
+          schema:
+            properties: 
+              image:
+                type: object
+            required:
+              - image
+
+      responses:
+        '200':
+          description: 'Recipe Found'
+        
+        '400':
+          description: 'Bad Request'
+
+  /core/random-recipes:
+    get:
+      operationId: randomRecipes
+      x-google-backend:
+        address: https://host/v1/core/random-recipes
+
+      responses:
+        '200':
+          description: 'Recipe Found'
+        
+        '400':
+          description: 'Bad Request'
