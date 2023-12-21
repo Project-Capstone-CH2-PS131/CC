@@ -2,6 +2,30 @@
 
 API Gateway configuration.
 
+<img src=".\assets\images\architecture.png" />
+
+## API Endpoint
+
+### [POST] Register User
+```
+https://smart-fridge-api-gateway-79skkhn6.an.gateway.dev/v1/auth/register
+```
+
+### [POST] Login User
+```
+https://smart-fridge-api-gateway-79skkhn6.an.gateway.dev/v1/auth/login
+```
+
+### [POST] Upload Image and Get Recipes
+```
+https://smart-fridge-api-gateway-79skkhn6.an.gateway.dev/v1/core/ingredient
+```
+
+### [GET] Get Random Recipes
+```
+https://smart-fridge-api-gateway-79skkhn6.an.gateway.dev/v1/core/random-recipes
+```
+
 ## How to Deploy
 
 Set project id and region.
